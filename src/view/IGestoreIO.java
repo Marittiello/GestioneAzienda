@@ -16,4 +16,5 @@ public interface IGestoreIO {
 	public void stampaMessaggio(String messaggio);
 	public void statistiche(Dipendente[] aziende);
 	public void statisticheByCitta(Dipendente[] azienda, String citta);
+	public void menu2();
 }

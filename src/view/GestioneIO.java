@@ -33,7 +33,6 @@ public class GestioneIO implements IGestoreIO{
 
 	@Override
 	public Date leggiData(String messaggio) {
-		Scanner input= new Scanner(System.in);
 		System.out.println(messaggio);
 		int giorno=leggiIntero("Inserisci il giorno: ");
 		int mese=leggiIntero("Inserisci il mese: ") ;
@@ -50,7 +49,7 @@ public class GestioneIO implements IGestoreIO{
 		dipendente.dataNascita=leggiData("Inserisci la data di nascita: ");
 		dipendente.citta=leggiStringa("Inserisci la citta: ");
 		dipendente.stipendio=leggiDecimale("Inserisci lo stipendio: ");
-		dipendente.anniEsperienza=leggiIntero("Inserisci gli anni di esperienza accumulati");
+		dipendente.anniEsperienza=leggiIntero("Inserisci gli anni di esperienza accumulati: ");
 	}
 
 	@Override
@@ -64,7 +63,8 @@ public class GestioneIO implements IGestoreIO{
 		System.out.println("Data Di Nascita: "+dipendente.dataNascita);
 		System.out.println("Citta: "+dipendente.citta);
 		System.out.println("Stipendio: "+dipendente.stipendio);
-		System.out.println("Anni Di Esperienza"+dipendente.anniEsperienza);
+		System.out.println("Anni Di Esperienza: "+dipendente.anniEsperienza);
+		System.out.println("**********************");
 		}
 		else {
 			System.out.println("Dipendente non trovato");
@@ -113,6 +113,12 @@ public class GestioneIO implements IGestoreIO{
 		System.out.println("**********************");
 	}
 
+//	5)Statistiche;
+//	NB: questa opzione deve stampare:
+//	-il numero di dipendenti;
+//	-lo stipendio medio;
+//	-il valore medio degli anni di esperienza.
+	
 	@Override
 	public void stampaMessaggio(String messaggio) {
 		System.out.println(messaggio);
@@ -121,16 +127,40 @@ public class GestioneIO implements IGestoreIO{
 	@Override
 	public void statistiche(Dipendente[] azienda) {
 		int dipendentiTrovati=0;
+		Double addStipendi=0.0;
+		int anniEsp=0;
 		for(int i=0;i<azienda.length;i++) {
 			if(azienda[i]!=null) {
 				dipendentiTrovati++;
 			}
 		}
-		System.out.println("Numero Dipendenti:");
-	}	
+		for(int i=0;i<azienda.length;i++) {
+			if(azienda[i]!=null) {
+				azienda[i].stipendio=addStipendi;
+			}
+		}
+		for(int i=0;i<azienda.length;i++) {
+			if(azienda[i]!=null) {
+				azienda[i].anniEsperienza=anniEsp;
+			}
+		}
+		System.out.println("Numero Dipendenti: "+dipendentiTrovati);
+		System.out.println("Stipendio Medio: "+(addStipendi/dipendentiTrovati));
+		System.out.println("Media Anni D'Esperienza: "+(anniEsp/dipendentiTrovati));
 
+	}	
+	
 	@Override
 	public void statisticheByCitta(Dipendente[] azienda, String citta) {
+		
+	}
+
+	@Override
+	public void menu2() {
+		System.out.println("*********************");
+		System.out.println("1)Tramite ID. ");
+		System.out.println("2)Tramite Codice Fiscale. ");
+		System.out.println("*********************");
 		
 	}
 
