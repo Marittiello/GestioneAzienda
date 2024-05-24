@@ -34,22 +34,22 @@ public class GestioneIO implements IGestoreIO{
 	@Override
 	public Date leggiData(String messaggio) {
 		System.out.println(messaggio);
-		int giorno=leggiIntero("Inserisci il giorno: ");
-		int mese=leggiIntero("Inserisci il mese: ") ;
-		int anno=leggiIntero("Inserisci l'anno: ");
+		int giorno=leggiIntero("Inserisci Il Giorno: ");
+		int mese=leggiIntero("Inserisci Il Mese: ") ;
+		int anno=leggiIntero("Inserisci L'Anno: ");
 		return Date.valueOf(LocalDate.of(anno, mese, giorno));
 
 	}
 
 	@Override
 	public void form(Dipendente dipendente) {
-		dipendente.nome=leggiStringa("Inserisci il nome: ");
-		dipendente.cognome=leggiStringa("Inserisci il cognome: ");
-		dipendente.cf=leggiStringa("Inserisci il Codice Fiscale: ");
-		dipendente.dataNascita=leggiData("Inserisci la data di nascita: ");
-		dipendente.citta=leggiStringa("Inserisci la citta: ");
-		dipendente.stipendio=leggiDecimale("Inserisci lo stipendio: ");
-		dipendente.anniEsperienza=leggiIntero("Inserisci gli anni di esperienza accumulati: ");
+		dipendente.nome=leggiStringa("Inserisci Il Nome: ");
+		dipendente.cognome=leggiStringa("Inserisci Il Cognome: ");
+		dipendente.cf=leggiStringa("Inserisci Il Codice Fiscale: ");
+		dipendente.dataNascita=leggiData("Inserisci La Data Di Nascita: ");
+		dipendente.citta=leggiStringa("Inserisci La Citta: ");
+		dipendente.stipendio=leggiDecimale("Inserisci Lo Stipendio: ");
+		dipendente.anniEsperienza=leggiIntero("Inserisci Gli Anni Di Esperienza Accumulati: ");
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class GestioneIO implements IGestoreIO{
 			System.out.println("**********************");
 		}
 		else {
-			System.out.println("Dipendente non trovato");
+			System.out.println("Dipendente Non Trovato");
 		}
 	}
 
@@ -168,6 +168,12 @@ public class GestioneIO implements IGestoreIO{
 		System.out.println("2)Tramite Codice Fiscale. ");
 		System.out.println("*********************");
 
+	}
+	
+	public void premiPerContinuare() {
+		Scanner input= new Scanner(System.in);
+		System.out.println("Premi Per Continuare... ");
+		input.nextLine();
 	}
 
 }
