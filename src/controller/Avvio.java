@@ -42,12 +42,13 @@ public class Avvio {
 					
 				}
 				}
+				break;
 			}
 			
-//			case 3:{
-//				gio.tabella(cs.leggi());
-//				break;
-//			}
+			case 3:{
+				gio.tabella(cs.leggi());
+				break;
+			}
 			
 			case 4:{				
 				gio.menu2();
@@ -74,11 +75,13 @@ public class Avvio {
 
 			}
 			case 5:{
-				gio.statistiche(null);
+				gio.statistiche(cs.leggi());
+			}
+			case 6:{
+				String citta=gio.leggiStringa("Inserisci la citta da ricercare: ");
+				gio.statisticheByCitta(cs.leggi(), citta);
 			}
 			}
-
-
 		}while(scelta!=7);
 
 

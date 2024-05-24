@@ -20,7 +20,7 @@ public class GestioneIO implements IGestoreIO{
 		Scanner input= new Scanner(System.in);
 		System.out.println(messaggio);
 		return Integer.parseInt(input.nextLine());
-		
+
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public class GestioneIO implements IGestoreIO{
 		Scanner input= new Scanner(System.in);
 		System.out.println(messaggio);
 		return Double.parseDouble(input.nextLine());
-		
+
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class GestioneIO implements IGestoreIO{
 		int mese=leggiIntero("Inserisci il mese: ") ;
 		int anno=leggiIntero("Inserisci l'anno: ");
 		return Date.valueOf(LocalDate.of(anno, mese, giorno));
-		
+
 	}
 
 	@Override
@@ -54,17 +54,17 @@ public class GestioneIO implements IGestoreIO{
 
 	@Override
 	public void schedaDipendente(Dipendente dipendente) {
-		
+
 		if(dipendente!=null) {
-		System.out.println("ID: "+dipendente.id);
-		System.out.println("Nome: "+dipendente.nome);
-		System.out.println("Cognome: "+dipendente.cognome);
-		System.out.println("Codice Fiscale: "+dipendente.cf);
-		System.out.println("Data Di Nascita: "+dipendente.dataNascita);
-		System.out.println("Citta: "+dipendente.citta);
-		System.out.println("Stipendio: "+dipendente.stipendio);
-		System.out.println("Anni Di Esperienza: "+dipendente.anniEsperienza);
-		System.out.println("**********************");
+			System.out.println("ID: "+dipendente.id);
+			System.out.println("Nome: "+dipendente.nome);
+			System.out.println("Cognome: "+dipendente.cognome);
+			System.out.println("Codice Fiscale: "+dipendente.cf);
+			System.out.println("Data Di Nascita: "+dipendente.dataNascita);
+			System.out.println("Citta: "+dipendente.citta);
+			System.out.println("Stipendio: "+dipendente.stipendio);
+			System.out.println("Anni Di Esperienza: "+dipendente.anniEsperienza);
+			System.out.println("**********************");
 		}
 		else {
 			System.out.println("Dipendente non trovato");
@@ -113,12 +113,12 @@ public class GestioneIO implements IGestoreIO{
 		System.out.println("**********************");
 	}
 
-//	5)Statistiche;
-//	NB: questa opzione deve stampare:
-//	-il numero di dipendenti;
-//	-lo stipendio medio;
-//	-il valore medio degli anni di esperienza.
-	
+	//	5)Statistiche;
+	//	NB: questa opzione deve stampare:
+	//	-il numero di dipendenti;
+	//	-lo stipendio medio;
+	//	-il valore medio degli anni di esperienza.
+
 	@Override
 	public void stampaMessaggio(String messaggio) {
 		System.out.println(messaggio);
@@ -132,28 +132,34 @@ public class GestioneIO implements IGestoreIO{
 		for(int i=0;i<azienda.length;i++) {
 			if(azienda[i]!=null) {
 				dipendentiTrovati++;
-			}
-		}
-		for(int i=0;i<azienda.length;i++) {
-			if(azienda[i]!=null) {
-				azienda[i].stipendio=addStipendi;
-			}
-		}
-		for(int i=0;i<azienda.length;i++) {
-			if(azienda[i]!=null) {
-				azienda[i].anniEsperienza=anniEsp;
+				addStipendi+=azienda[i].stipendio;
+				anniEsp+=azienda[i].anniEsperienza;
 			}
 		}
 		System.out.println("Numero Dipendenti: "+dipendentiTrovati);
 		System.out.println("Stipendio Medio: "+(addStipendi/dipendentiTrovati));
 		System.out.println("Media Anni D'Esperienza: "+(anniEsp/dipendentiTrovati));
-
 	}	
-	
+
 	@Override
-	public void statisticheByCitta(Dipendente[] azienda, String citta) {
-		
-	}
+	public void statisticheByCitta(Dipendente[] azienda , String citt) {
+		int dipendentiTrovati=0;
+		Double addStipendi=0.0;
+		int anniEsp=0;
+		for(int i=0;i<azienda.length;i++) {
+			if(azienda[i]!=null) {
+				if(azienda[i].citta.equals(citt)) {
+					dipendentiTrovati++;
+					addStipendi+=azienda[i].stipendio;
+					anniEsp+=azienda[i].anniEsperienza;
+				}
+			}
+		}
+		System.out.println("Numero Dipendenti: "+dipendentiTrovati);
+		System.out.println("Stipendio Medio: "+(addStipendi/dipendentiTrovati));
+		System.out.println("Media Anni D'Esperienza: "+(anniEsp/dipendentiTrovati));
+	}	
+
 
 	@Override
 	public void menu2() {
@@ -161,7 +167,7 @@ public class GestioneIO implements IGestoreIO{
 		System.out.println("1)Tramite ID. ");
 		System.out.println("2)Tramite Codice Fiscale. ");
 		System.out.println("*********************");
-		
+
 	}
 
 }
